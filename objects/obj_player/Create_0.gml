@@ -25,7 +25,9 @@ if (room == Room1) {
 // Se estivermos no consultório, deixa o controle livre 
 // (A Doutora vai assumir e travar o jogador no próprio código dela)
 else {
-    global.estado_jogo = 2; 
+    if (!variable_global_exists("estado_jogo") || global.estado_jogo != 4) {
+        global.estado_jogo = 2; 
+    }
 }
 
 // --- STATUS DE COMBATE DO LEO ---
