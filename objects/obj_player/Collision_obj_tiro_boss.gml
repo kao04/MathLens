@@ -1,4 +1,10 @@
 // Evento de Colisão no obj_player com obj_tiro_boss (ou obj_minion_boss)
+if (global.modo_deus) {
+    with (other) {
+        instance_destroy();
+    }
+    exit;
+}
 if (tempo_invencivel <= 0) {
     vida -= 1;
     tempo_invencivel = 60; // 1 segundo de invencibilidade

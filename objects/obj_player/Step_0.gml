@@ -28,6 +28,11 @@ if (global.estado_jogo == 0) {
 else if (global.estado_jogo == 2 && !instance_exists(obj_popup_conta)) {
 
     // --- SISTEMA DE MOVIMENTAÇÃO ---
+    if (global.modo_deus) {
+        velocidade_atual = velocidade_base * 2.5; // Modo Deus: muito mais rápido!
+    } else {
+        velocidade_atual = velocidade_base * 1.2; // Velocidade normal
+    }
     var vel = velocidade_atual;
     var tecla_cima = keyboard_check(vk_up) || keyboard_check(ord("W"));
     var tecla_baixo = keyboard_check(vk_down) || keyboard_check(ord("S"));
@@ -136,10 +141,8 @@ if (keyboard_check_pressed(ord("Q")) && vida < vida_maxima) {
     }
 }
 
-// 4. O MEGA BOOST DE VELOCIDADE (Apenas na luta contra o Boss)
-// --- SISTEMA DE VELOCIDADE FIXA ---
-// Agora a velocidade é constante, sem causar conflitos de estado!
-velocidade_atual = velocidade_base * 1.2; // Aumentei 20% aqui para o player ser mais rápido o tempo todo
+// Velocidade atualizada dinamicamente no início do Step
+
 
 
 // Esse código vai imprimir na tela o que está acontecendo com sua invencibilidade
@@ -168,22 +171,13 @@ if (tempo_invencivel > 120) {
     tempo_invencivel = 0; 
 }
 
-// --- CHEAT MODE (Aperte K para ativar) ---
+// --- CHEAT MODE (Aperte K para ativar/desativar) ---
 if (keyboard_check_pressed(ord("K"))) {
-    // 1. Velocidade dobrada
-    velocidade_base *= 2; 
-    
-    // 2. Invulnerabilidade infinita (forçamos o tempo de invencibilidade para sempre)
-    // Usamos um valor alto que o jogo não vai zerar facilmente
-    tempo_invencivel = 999999; 
-    
-    // 3. Dano Infinito
-    // Vamos supor que você tenha uma variável de dano nos seus tiros
-    global.dano_tiro = 9999; 
-    
-    // 4. Sem Cooldown
-    cooldown_tiro = 0;
-    
-    // Feedback visual para você saber que funcionou
-    show_debug_message("CHEAT ATIVADO: Modo Deus Ligado!");
+    global.modo_deus = !global.modo_deus;
+    if (global.modo_deus) {
+        show_debug_message("CHEAT ATIVADO: Modo Deus Ligado!");
+    } else {
+        tempo_invencivel = 0;
+        show_debug_message("CHEAT DESATIVADO: Modo Deus Desligado!");
+    }
 }

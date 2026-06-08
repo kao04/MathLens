@@ -1,6 +1,13 @@
-// --- CHEAT MODE (Aperte K para ativar) ---
-if (keyboard_check_pressed(ord("K"))) {
-    vida -= 9999;
+if (global.modo_deus) {
+    vida = 0;
+    instance_create_depth(0, 0, -9999, obj_vitoria);
+    
+    // Mata o boss, os tiros dele e os minions que sobraram!
+    with(obj_tiro_boss) instance_destroy();
+    with(obj_minion_boss) instance_destroy();
+    with(other) instance_destroy();
+    instance_destroy();
+    exit;
 }
 if (estado == "CANSADO") {
     

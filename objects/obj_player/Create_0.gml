@@ -2,6 +2,8 @@
 macas_coletadas = 0;
 bananas_coletadas = 0;
 hud_alpha = 0; // A variável que estava faltando e causou o erro!
+global.modo_deus = false;
+
 
 // --- SISTEMA DE FALA ---
 mensagem = "";
