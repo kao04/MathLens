@@ -1,0 +1,1 @@
+ocupada = false; // Começa vazia

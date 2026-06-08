@@ -1,0 +1,1 @@
+selecao = 0; // 0 = Tentar de novo, 1 = Sair

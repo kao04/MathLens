@@ -1,0 +1,1 @@
+texto = "Na mente de Leo, os números não fazem sentido...\nEles se misturam, se embaralham e assustam.\nIsso é o que os médicos chamam de Discalculia.\n\nHoje, uma simples tarefa de ir ao mercado com seu pai\nvai se transformar em uma batalha épica\ncontra o seu maior medo: A Matemática.\n\n\n[Pressione ESPAÇO para começar]";
